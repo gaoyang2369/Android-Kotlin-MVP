@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">微信小程序贴图助手</string>
+    <string name="accessibility_service_label">微信小程序目标页面贴图助手</string>
+</resources>
