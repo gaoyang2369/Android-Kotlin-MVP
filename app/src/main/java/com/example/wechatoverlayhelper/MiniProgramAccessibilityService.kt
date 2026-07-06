@@ -2,11 +2,14 @@ package com.example.wechatoverlayhelper
 
 import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.AccessibilityServiceInfo
+import android.os.Handler
+import android.os.Looper
 import android.view.accessibility.AccessibilityEvent
 import android.view.accessibility.AccessibilityNodeInfo
 
 class MiniProgramAccessibilityService : AccessibilityService() {
     private val config = TargetPageConfig.DEFAULT
+    private val handler = Handler(Looper.getMainLooper())
     private var hitCount = 0
     private var missCount = 0
     private var isOverlayShown = false
@@ -18,7 +21,9 @@ class MiniProgramAccessibilityService : AccessibilityService() {
             packageNames = arrayOf(config.targetPackage)
             feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC
             notificationTimeout = 120
-            flags = flags or AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS
+            flags = flags or
+                AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS or
+                AccessibilityServiceInfo.FLAG_INCLUDE_NOT_IMPORTANT_VIEWS
         }
     }
 
@@ -36,24 +41,37 @@ class MiniProgramAccessibilityService : AccessibilityService() {
             return
         }
 
-        val texts = mutableListOf<String>()
-        rootInActiveWindow?.let { root ->
-            collectTexts(root, texts)
-            root.recycle()
-        }
-
-        if (PageRuleMatcher.matches(config, texts)) {
-            registerHit()
-        } else {
-            registerMiss()
-        }
+        inspectCurrentWindow(event)
+        handler.removeCallbacksAndMessages(null)
+        handler.postDelayed({ inspectCurrentWindow(null) }, 250L)
+        handler.postDelayed({ inspectCurrentWindow(null) }, 700L)
     }
 
     override fun onInterrupt() = Unit
 
     override fun onDestroy() {
+        handler.removeCallbacksAndMessages(null)
         OverlayService.hide(this)
         super.onDestroy()
+    }
+
+    private fun inspectCurrentWindow(event: AccessibilityEvent?) {
+        val texts = mutableListOf<String>()
+        event?.text?.mapNotNullTo(texts) { it?.toString() }
+        event?.contentDescription?.toString()?.takeIf { it.isNotBlank() }?.let(texts::add)
+
+        rootInActiveWindow?.let { root ->
+            collectTexts(root, texts)
+            root.recycle()
+        }
+
+        val matched = PageRuleMatcher.matches(config, texts)
+        AppPreferences.saveLastAccessibilitySnapshot(this, texts, matched)
+        if (matched) {
+            registerHit()
+        } else {
+            registerMiss()
+        }
     }
 
     private fun registerHit() {

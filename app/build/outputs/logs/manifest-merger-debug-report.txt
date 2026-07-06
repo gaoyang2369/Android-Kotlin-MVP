@@ -1,0 +1,103 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml:2:1-47:12
+INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml:2:1-47:12
+	package
+		INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:4:5-78
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:4:22-75
+uses-permission#android.permission.FOREGROUND_SERVICE
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:5:22-74
+uses-permission#android.permission.FOREGROUND_SERVICE_SPECIAL_USE
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:6:5-89
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:6:22-86
+application
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:8:5-46:19
+INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml:8:5-46:19
+	android:extractNativeLibs
+		INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml
+	android:supportsRtl
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:13:9-35
+	android:label
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:11:9-41
+	android:roundIcon
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:12:9-54
+	android:icon
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:10:9-43
+	android:allowBackup
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:14:9-40
+activity#com.example.wechatoverlayhelper.MainActivity
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:16:9-23:20
+	android:exported
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:18:13-36
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:17:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:19:13-22:29
+action#android.intent.action.MAIN
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:21:17-77
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:21:27-74
+service#com.example.wechatoverlayhelper.OverlayService
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:25:9-32:19
+	android:exported
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:27:13-37
+	android:foregroundServiceType
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:28:13-55
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:26:13-43
+property#android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:29:13-31:146
+	android:value
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:31:17-143
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:30:17-76
+service#com.example.wechatoverlayhelper.MiniProgramAccessibilityService
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:34:9-45:19
+	android:label
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:37:13-64
+	android:exported
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:36:13-36
+	android:permission
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:38:13-79
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:35:13-60
+intent-filter#action:name:android.accessibilityservice.AccessibilityService
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:39:13-41:29
+action#android.accessibilityservice.AccessibilityService
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:40:17-92
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:40:25-89
+meta-data#android.accessibilityservice
+ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:42:13-44:72
+	android:resource
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:44:17-69
+	android:name
+		ADDED from D:\Project\toy\app\src\main\AndroidManifest.xml:43:17-60
+uses-sdk
+INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml
+INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Project\toy\app\src\main\AndroidManifest.xml

@@ -7,16 +7,17 @@ object PageRuleMatcher {
             .map { it.trim() }
             .filter { it.isNotEmpty() }
             .joinToString(separator = "\n")
+            .replace(Regex("\\s+"), "")
 
         if (normalizedText.isBlank()) return false
 
         val hasAllRequired = config.requiredTexts.all { required ->
-            normalizedText.contains(required, ignoreCase = true)
+            normalizedText.contains(required.replace(Regex("\\s+"), ""), ignoreCase = true)
         }
         if (!hasAllRequired) return false
 
         val optionalHitCount = config.optionalTexts.count { optional ->
-            normalizedText.contains(optional, ignoreCase = true)
+            normalizedText.contains(optional.replace(Regex("\\s+"), ""), ignoreCase = true)
         }
         return optionalHitCount >= config.minOptionalHitCount
     }

@@ -1,0 +1,9 @@
+com.example.wechatoverlayhelper:string/app_name = 0x7f030001
+com.example.wechatoverlayhelper:mipmap/ic_launcher_round = 0x7f020001
+com.example.wechatoverlayhelper:mipmap/ic_launcher = 0x7f020000
+com.example.wechatoverlayhelper:xml/accessibility_service_config = 0x7f050000
+com.example.wechatoverlayhelper:drawable/ic_overlay_notification = 0x7f010002
+com.example.wechatoverlayhelper:style/AppTheme = 0x7f040000
+com.example.wechatoverlayhelper:drawable/ic_launcher_foreground = 0x7f010001
+com.example.wechatoverlayhelper:string/accessibility_service_label = 0x7f030000
+com.example.wechatoverlayhelper:drawable/ic_launcher_background = 0x7f010000

@@ -1,0 +1,11 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable ic_overlay_notification
+mipmap ic_launcher
+mipmap ic_launcher_round
+string accessibility_service_label
+string app_name
+style AppTheme
+xml accessibility_service_config

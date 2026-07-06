@@ -12,6 +12,7 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.view.accessibility.AccessibilityManager
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
@@ -19,6 +20,8 @@ import android.widget.TextView
 class MainActivity : Activity() {
     private lateinit var overlayStatus: TextView
     private lateinit var accessibilityStatus: TextView
+    private lateinit var lastTextStatus: TextView
+    private lateinit var nameInput: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,8 +60,30 @@ class MainActivity : Activity() {
 
         overlayStatus = statusTextView()
         accessibilityStatus = statusTextView()
+        lastTextStatus = statusTextView()
         container.addView(overlayStatus)
         container.addView(accessibilityStatus)
+        container.addView(lastTextStatus)
+
+        container.addView(TextView(this).apply {
+            text = "贴图姓名"
+            textSize = 16f
+            typeface = Typeface.DEFAULT_BOLD
+            setPadding(0, dp(18), 0, dp(6))
+        })
+
+        nameInput = EditText(this).apply {
+            setSingleLine(true)
+            textSize = 18f
+            setText(AppPreferences.getOverlayName(this@MainActivity))
+            hint = "输入要显示的姓名"
+        }
+        container.addView(nameInput)
+
+        container.addView(actionButton("保存姓名") {
+            AppPreferences.setOverlayName(this, nameInput.text?.toString().orEmpty())
+            OverlayService.show(this)
+        })
 
         container.addView(actionButton("打开悬浮窗权限设置") {
             val intent = Intent(
@@ -81,7 +106,7 @@ class MainActivity : Activity() {
         })
 
         container.addView(TextView(this).apply {
-            text = "当前写死规则：requiredTexts=${TargetPageConfig.DEFAULT.requiredTexts}；optionalTexts=${TargetPageConfig.DEFAULT.optionalTexts}；至少命中 ${TargetPageConfig.DEFAULT.minOptionalHitCount} 个可选文本。"
+            text = "当前触发词：${TargetPageConfig.DEFAULT.optionalTexts}；命中其中 ${TargetPageConfig.DEFAULT.minOptionalHitCount} 个就显示贴图。"
             textSize = 13f
             setPadding(0, dp(18), 0, 0)
         })
@@ -117,6 +142,14 @@ class MainActivity : Activity() {
             "无障碍服务：已开启"
         } else {
             "无障碍服务：未开启"
+        }
+
+        val lastText = AppPreferences.getLastAccessibilityText(this)
+        lastTextStatus.text = if (lastText.isBlank()) {
+            "最近识别：暂无"
+        } else {
+            val matched = if (AppPreferences.wasLastMatched(this)) "已命中" else "未命中"
+            "最近识别：$matched；$lastText"
         }
     }
 

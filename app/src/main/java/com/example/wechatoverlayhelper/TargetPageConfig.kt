@@ -14,14 +14,14 @@ data class TargetPageConfig(
     companion object {
         val DEFAULT = TargetPageConfig(
             targetPackage = "com.tencent.mm",
-            requiredTexts = listOf("确认入场"),
-            optionalTexts = emptyList(),
-            minOptionalHitCount = 0,
+            requiredTexts = emptyList(),
+            optionalTexts = listOf("确认入场", "用户姓名", "预约场次", "预约时间", "券码信息"),
+            minOptionalHitCount = 1,
             overlayImageAssetName = "sticker.png",
-            xRatio = 0.32f,
-            yRatio = 0.80f,
-            widthDp = 78,
-            heightDp = 31,
+            xRatio = 0.38f,
+            yRatio = 0.81f,
+            widthDp = 120,
+            heightDp = 40,
         )
     }
 }
